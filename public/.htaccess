@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    AddDefaultCharset UTF-8
+
+    <FilesMatch "\.(env|ini|log|htaccess|db|mysql)$">
+        Require all denied
+        Options -Indexes
+    </FilesMatch>
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
